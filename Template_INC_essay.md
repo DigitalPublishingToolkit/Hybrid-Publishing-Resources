@@ -1,4 +1,4 @@
-#Metadata
+---
 Pr-id: project  
 P-id: publication series  
 A-id: number within the series  
@@ -14,7 +14,7 @@ Author-bio: about the author
 Abstract: short description of the article (100 words)  
 Keywords: 50 keywords for search and indexing  
 Rights: Creative Commons etc.  
-
+... 
 
 #Title: Title of the Essay
 #Author: Jane Doe
