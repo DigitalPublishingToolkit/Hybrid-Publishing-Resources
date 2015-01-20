@@ -1,0 +1,21 @@
+body{
+    font-size:12pt;
+    background: red;
+    color: white;
+}
+
+@font-face {
+    font-family: 'Ubuntu Mono Bold';
+    src: url('UbuntuMono-B.ttf');
+}
+
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Ubuntu Mono Bold', monospace;
+    font-weight: 300;
+    hyphens: none !important;
+    -moz-hyphens: none !important;
+    -webkit-hyphens: none !important;
+    adobe-hyphenate: none !important;
+    margin: 0;
+}
