@@ -1,11 +1,11 @@
 # Generic Makefile
-#
+
 
 # markdown sources
 sources=$(shell scripts/expand_toc.py --list TOC.md)
 
 clean:
-	rm compound_book.md
+	rm compound_src.md
 	rm book.epub
 
 
@@ -14,12 +14,12 @@ clean:
 sources=$(shell scripts/expand_toc.py --list compound/TOC.md)
 
 # Rule to build the entire book as a single markdown file from the table of contents file using expand_toc.py
-compound_book.md: compound/TOC.md $(sources)
+compound_src.md: compound/TOC.md $(sources)
 	scripts/expand_toc.py compound/TOC.md --section-pages --filter scripts/chapter.sh > $@
 
 
 
-book.epub: compound_book.md epub/metadata.xml epub/styles.epub.css epub/cover.png
+book.epub: compound_src.md epub/metadata.xml epub/styles.epub.css epub/cover.png
 	pandoc \
 		--from markdown \
 		--to epub3 \
@@ -32,7 +32,7 @@ book.epub: compound_book.md epub/metadata.xml epub/styles.epub.css epub/cover.pn
 		--default-image-extension png \
 		--toc-depth=2 \
 		-o book.epub \
-		compound_book.md
+		compound_src.md
 
 # # Epub post production - and and enhancements to toolkit.epub
 # FromPrintToEbooks.epub: toolkit.epub
