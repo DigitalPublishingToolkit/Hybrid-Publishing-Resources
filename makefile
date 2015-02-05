@@ -1,21 +1,54 @@
 # Generic Makefile
+alldocx=$(wildcard docx/*.docx)
+allmarkdown=$(wildcard md/*.md)
+markdowns_compound=compound_src.md
+epub=book.epub
+icmls=$(wildcard icml/*.icml)
+
+test: $(md)
+	echo $(addprefix md/, \
+	$(notdir \
+	$(basename \
+	$(wildcard docx/*.docx)))) ; \
+	done
+
+markdowns:$(alldocx) # convert docx to md
+	for i in $(alldocx); \
+	do ./scripts/docx2md.sh $$i; \
+	done
+
+example:markdowns $(allmarkdown)
+	for i in $(allmarkdown) ; \
+	do echo $$i; \
+	done
+
+# Explanation rule example
+## prereq:
+### markdowns (another rule - that creates markdown files) 
+### $(allmarkdown) - a var that wildcards all the mardowns in md.
+## The prereq#1(rule) is execute and so it can supply the prereq#2(var) with the required files
 
 
+
+# CHECK ?? IS TOC.md needed?
 # markdown sources
 sources=$(shell scripts/expand_toc.py --list TOC.md)
-
-clean:
-	rm compound_src.md
-	rm book.epub
-
-
-
-# markdown sources
-sources=$(shell scripts/expand_toc.py --list compound/TOC.md)
 
 # Rule to build the entire book as a single markdown file from the table of contents file using expand_toc.py
 compound_src.md: compound/TOC.md $(sources)
 	scripts/expand_toc.py compound/TOC.md --section-pages --filter scripts/chapter.sh > $@
+
+
+
+# make docx -> markdown for all docx/*.docx
+docx=$(shell script/)
+
+
+
+
+
+
+
 
 
 
@@ -34,41 +67,8 @@ book.epub: compound_src.md epub/metadata.xml epub/styles.epub.css epub/cover.png
 		-o book.epub \
 		compound_src.md
 
-# # Epub post production - and and enhancements to toolkit.epub
-# FromPrintToEbooks.epub: toolkit.epub
-# 	python scripts/glossary.py toolkit.epub && \
-# 	python scripts/epub_post.py FromPrintToEbooks.epub
-
-# # 
-
-# # needs wkhtmltopdf installed http://wkhtmltopdf.org/
-# toolkit.pdf: toolkit.md
-# 	cd docs && pandoc --from markdown \
-# 	-t html5 \
-# 	-s \
-# 	--css=styles.pdf.css \
-# 	--default-image-extension png \
-# 	-o toolkit.html ../toolkit.md && \
-# 	wkhtmltopdf --user-style-sheet styles.pdf.css toolkit.html ../toolkit.pdf 
 
 
-
-# toolkit.docx: toolkit.md
-# 	cd docs && pandoc --default-image-extension png --table-of-contents -o ../toolkit.docx ../toolkit.md
-
-# toolkit.odf: toolkit.md
-# 	cd docs && pandoc --default-image-extension png --table-of-contents -o ../toolkit.odf ../toolkit.md
-
-
-# # Trailer (this rule works for any epub)
-# %-trailer.gif: %.epub
-# 	python scripts/epubtrailer.py $< --width 320 --height 240 --duration=0.5 -o $@
-
-
-# toolkit.icml: toolkit.md
-# 	cd docs && pandoc \
-# 		--from markdown \
-# 		--to icml \
-# 		--self-contained \
-# 		-o ../toolkit.icml \
-# 		../toolkit.md
+clean: # remove outputs
+	rm compound_src.md
+	rm book.epub

@@ -1,4 +1,0 @@
-# Colophone
-
-Who did what.
-
