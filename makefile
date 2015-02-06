@@ -13,40 +13,30 @@ test: $(md)
 	done
 
 markdowns:$(alldocx) # convert docx to md
-	for i in $(alldocx); \
-	do ./scripts/docx2md.sh $$i; \
+	for i in $(alldocx) ; \
+	do md=md/`basename $$i .docx`.md ; \
+	echo $$md ; \
+	pandoc $$i \
+	       	--from=docx \
+		--to=markdown \
+	       	--atx-headers \
+	       	-o $$md ; \
 	done
 
-example:markdowns $(allmarkdown)
+
+book.md: $(allmarkdown)
+	for i in $(allmarkdown) ; \
+	do ./scripts/md_stripmetada.py $$i >> book.md ; \
+	done
+
+
+ls_md:markdowns $(allmarkdown) # can be become compound rule
 	for i in $(allmarkdown) ; \
 	do echo $$i; \
 	done
 
-# Explanation rule example
-## prereq:
-### markdowns (another rule - that creates markdown files) 
-### $(allmarkdown) - a var that wildcards all the mardowns in md.
-## The prereq#1(rule) is execute and so it can supply the prereq#2(var) with the required files
 
-
-
-# CHECK ?? IS TOC.md needed?
-# markdown sources
-sources=$(shell scripts/expand_toc.py --list TOC.md)
-
-# Rule to build the entire book as a single markdown file from the table of contents file using expand_toc.py
-compound_src.md: compound/TOC.md $(sources)
-	scripts/expand_toc.py compound/TOC.md --section-pages --filter scripts/chapter.sh > $@
-
-
-
-# make docx -> markdown for all docx/*.docx
-docx=$(shell script/)
-
-
-
-
-
+# Rule to build the entire book as a single markdown file from the markdown files inside md/
 
 
 
@@ -69,6 +59,8 @@ book.epub: compound_src.md epub/metadata.xml epub/styles.epub.css epub/cover.png
 
 
 
-clean: # remove outputs
-	rm compound_src.md
-	rm book.epub
+clean:  # remove outputs
+	rm book.md -f
+	rm book.epub -f
+	rm *~ */*~ -f #emacs files
+# improve rule: rm if file exits
