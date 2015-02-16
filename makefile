@@ -49,7 +49,7 @@ book.md: clean $(allmarkdown)
 
 
 
-book.epub: clean book.md epub/metadata.xml epub/styles.epub.css epub/cover.jpg
+book.epub: clean markdowns book.md epub/metadata.xml epub/styles.epub.css epub/cover.jpg
 	cd md && pandoc \
 		--from markdown \
 		--to epub3 \
