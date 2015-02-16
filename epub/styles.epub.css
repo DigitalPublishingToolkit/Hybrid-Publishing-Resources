@@ -1,21 +1,38 @@
 body{
     font-size:12pt;
-    background: red;
-    color: white;
-}
-
-@font-face {
-    font-family: 'Ubuntu Mono Bold';
-    src: url('UbuntuMono-B.ttf');
+    background: white;
+    color: black;
+    font-family: sans;	
 }
 
 
 h1, h2, h3, h4, h5, h6 {
-    font-family: 'Ubuntu Mono Bold', monospace;
+    font-family: monospace;
     font-weight: 300;
     hyphens: none !important;
     -moz-hyphens: none !important;
     -webkit-hyphens: none !important;
     adobe-hyphenate: none !important;
-    margin: 0;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+
+}
+
+div#cover-image{
+    text-align:center;
+}
+
+a.footnoteRef{
+    vertical-align: super;
+    line-height: normal;
+    font-size: 0.5em;
+}
+
+img {
+    max-width: 98%;
+    max-height: 98%;
+    width: auto;
+    height: auto;
 }

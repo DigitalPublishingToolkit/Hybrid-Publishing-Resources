@@ -62,8 +62,7 @@ book.epub: clean book.md epub/metadata.xml epub/styles.epub.css epub/cover.png
 		--toc-depth=1 \
 		-o book.epub \
 		md/book.md ;
-	echo "this is a test" ;\
-
+	python scripts/epub_process.py book.epub ;
 
 #		--epub-embed-font=lib/UbuntuMono-B.ttf \
 
