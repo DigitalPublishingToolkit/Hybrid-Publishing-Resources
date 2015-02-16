@@ -50,18 +50,19 @@ book.md: clean $(allmarkdown)
 
 
 book.epub: clean book.md epub/metadata.xml epub/styles.epub.css epub/cover.jpg
-	pandoc \
+	cd md && pandoc \
 		--from markdown \
 		--to epub3 \
 		--self-contained \
 		--epub-chapter-level=1 \
-		--epub-stylesheet=epub/styles.epub.css \
-		--epub-cover-image=epub/cover.jpg \
-		--epub-metadata=epub/metadata.xml \
+		--epub-stylesheet=../epub/styles.epub.css \
+		--epub-cover-image=../epub/cover.jpg \
+		--epub-metadata=../epub/metadata.xml \
 		--default-image-extension png \
 		--toc-depth=1 \
-		-o book.epub \
-		md/book.md ;
+		-o ../book.epub \
+		book.md ; \
+	cd ../ ; \
 	python scripts/epub_process.py book.epub ;
 
 #		--epub-embed-font=lib/UbuntuMono-B.ttf \
