@@ -1,11 +1,10 @@
 # INC Hybrid Publication's Resources
 
-This repository consists of a collection of resources to aid the development of EPUBs, based on Pandoc and Markdown source files.
+This repository consists of a collection of resources aided to the development of EPUBs, based on Pandoc,  Markdown source files, a make file and a few scripts.
 
-## Framework
-The essential elements that allow EPUBs to be developed
 
-To make use of it, clone the repository by running on the terminal:
+## Clone 
+To use this repository, clone it by running on the terminal:
 
 `git clone --depth 1 --branch master https://github.com/DigitalPublishingToolkit/Hybrid-Publication-Resources.git DESTINATION_FOLDER`
 
@@ -13,15 +12,15 @@ To make use of it, clone the repository by running on the terminal:
 
 `git remote remove origin`
 
-
-## Guides
-The folder guides presentes guides and templates for essay writing, namely
-* **Template_INC_essay.md** - template for essays, at the *Markdown* stage.
-* **Styleguide_INC_2014.md** -  a style guide to be followed on essay, at the *Manuscript* stage
+`./scripts/create_folders.sh`
 
 
-## Documentation
-Documentation on the resources can be found on the [wiki](https://github.com/DigitalPublishingToolkit/Hybrid-Publication-Resources/wiki) for this repository.
+## How to ?
+An detailed explanation of how to use this repostory can be found on wiki [wiki/From-Manuscript-to-EPUB](https://github.com/DigitalPublishingToolkit/Hybrid-Publishing-Resources/wiki/From-Manuscript-to-EPUB).
+
+## Guides & Templates
+INC guides and templates for essay writing, can be found at [wiki/INC-styleguide](https://github.com/DigitalPublishingToolkit/Hybrid-Publishing-Resources/wiki/INC-styleguide).
+
 
 
 ---
