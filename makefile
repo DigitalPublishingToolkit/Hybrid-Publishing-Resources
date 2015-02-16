@@ -1,66 +1,74 @@
 # Generic Makefile
 alldocx=$(wildcard docx/*.docx)
-allmarkdown=$(wildcard md/*.md)
+allmarkdown=$(filter-out md/book.md, $(shell ls md/*.md))
 markdowns_compound=compound_src.md
 epub=book.epub
 icmls=$(wildcard icml/*.icml)
 
-test: $(md)
-	echo $(addprefix md/, \
-	$(notdir \
-	$(basename \
-	$(wildcard docx/*.docx)))) ; \
-	done
+test: $(allmarkdown)
+	echo "start" ; 
+	echo $(allmarkdown) ; 
+	echo "end" ;
+
+	# echo $(addprefix md/, \
+	# $(notdir \
+	# $(basename \
+	# $(wildcard docx/*.docx)))) ; \
 
 markdowns:$(alldocx) # convert docx to md
 	for i in $(alldocx) ; \
 	do md=md/`basename $$i .docx`.md ; \
-	echo $$md ; \
 	pandoc $$i \
 	       	--from=docx \
 		--to=markdown \
 	       	--atx-headers \
-	       	-o $$md ; \
+		--template=essay.md.template \
+		-o $$md ; \
+	./scripts/md_unique_footnotes.py $$md ; \
 	done
 
 
-book.md: $(allmarkdown)
+
+icmls: $(allmarkdown)
 	for i in $(allmarkdown) ; \
-	do ./scripts/md_stripmetada.py $$i >> book.md ; \
+	do icml=icml/`basename $$i .md`.icml ; \
+	./scripts/md_stripmetada.py $$i > md/tmp.md ; \
+	pandoc md/tmp.md \
+		--from=markdown \
+		--to=icml \
+		--self-contained \
+		-o $$icml ; \
 	done
 
 
-ls_md:markdowns $(allmarkdown) # can be become compound rule
+
+book.md: clean $(allmarkdown)
 	for i in $(allmarkdown) ; \
-	do echo $$i; \
+	do ./scripts/md_stripmetada.py $$i >> md/book.md ; \
 	done
 
 
-# Rule to build the entire book as a single markdown file from the markdown files inside md/
 
-
-
-
-
-book.epub: compound_src.md epub/metadata.xml epub/styles.epub.css epub/cover.png
+book.epub: clean book.md epub/metadata.xml epub/styles.epub.css epub/cover.png
 	pandoc \
 		--from markdown \
 		--to epub3 \
 		--self-contained \
-		--epub-chapter-level=2 \
+		--epub-chapter-level=1 \
 		--epub-stylesheet=epub/styles.epub.css \
 		--epub-cover-image=epub/cover.png \
 		--epub-metadata=epub/metadata.xml \
-		--epub-embed-font=lib/UbuntuMono-B.ttf \
 		--default-image-extension png \
-		--toc-depth=2 \
+		--toc-depth=1 \
 		-o book.epub \
-		compound_src.md
+		md/book.md ;
+	echo "this is a test" ;\
 
 
+#		--epub-embed-font=lib/UbuntuMono-B.ttf \
 
 clean:  # remove outputs
-	rm book.md -f
+	rm md/book.md -f
 	rm book.epub -f
 	rm *~ */*~ -f #emacs files
 # improve rule: rm if file exits
