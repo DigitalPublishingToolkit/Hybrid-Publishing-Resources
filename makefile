@@ -1,19 +1,27 @@
-# Generic Makefile
+# Makefile for INC hybrid publications
+
+## Issues:
+# * why can't i make icmls before making markdowns ??
+
 alldocx=$(wildcard docx/*.docx)
-allmarkdown=$(filter-out md/book.md, $(shell ls md/*.md))
+allmarkdown=$(filter-out md/book.md, $(shell ls md/*.md)) # TODO: add if, so that if no md is present no error: "ls: cannot access md/*.md: No such file or directory"
 markdowns_compound=compound_src.md
 epub=book.epub
 icmls=$(wildcard icml/*.icml)
+
 
 test: $(allmarkdown)
 	echo "start" ; 
 	echo $(allmarkdown) ; 
 	echo "end" ;
 
-	# echo $(addprefix md/, \
-	# $(notdir \
-	# $(basename \
-	# $(wildcard docx/*.docx)))) ; \
+folders:
+	mkdir docx/ ; \
+	mkdir md/ ; \
+	mkdir md/imgs/ ; \
+	mkdir icml/ ; \
+	mkdir lib/ ;
+
 
 markdowns:$(alldocx) # convert docx to md
 	for i in $(alldocx) ; \
@@ -49,7 +57,7 @@ book.md: clean $(allmarkdown)
 
 
 
-book.epub: clean book.md epub/metadata.xml epub/styles.epub.css epub/cover.jpg
+book.epub: clean $(allmarkdown) book.md epub/metadata.xml epub/styles.epub.css epub/cover.jpg
 	cd md && pandoc \
 		--from markdown \
 		--to epub3 \
