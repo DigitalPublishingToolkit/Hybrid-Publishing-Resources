@@ -10,7 +10,7 @@ To use this repository, clone it by running on the terminal:
 
 `cd DESTINATION_FOLDER`
 
-`rm .git`
+`rm -r .git`
 
 
 ### Add to a remote repository (optional)
