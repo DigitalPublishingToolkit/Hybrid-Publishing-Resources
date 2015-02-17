@@ -50,3 +50,16 @@ André Castro 2015
 
 # TODO
 * in `git clone` make depth 1 - no previous history
+* rm -tf .git
+
+
+
+# Notes from workshop
+
+html5lib missing from macs - fix in epub_process.py
+
+clean up markdown: use pandoc -f markdown -t markdown (see book)
+
+if there is no metadata in markdown md_stripmetada -> dont apply over to the command
+
+

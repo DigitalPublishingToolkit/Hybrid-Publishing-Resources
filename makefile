@@ -76,7 +76,7 @@ book.epub: clean $(allmarkdown) book.md epub/metadata.xml epub/styles.epub.css e
 #		--epub-embed-font=lib/UbuntuMono-B.ttf \
 
 clean:  # remove outputs
-	rm md/book.md -f
-	rm book.epub -f
-	rm *~ */*~ -f #emacs files
+	rm -f md/book.md  
+	rm -f book.epub 
+	rm -f *~ */*~  #emacs files
 # improve rule: rm if file exits
