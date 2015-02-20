@@ -20,8 +20,8 @@ folders:
 	mkdir md/ ; \
 	mkdir md/imgs/ ; \
 	mkdir icml/ ; \
-	mkdir lib/ ;
-
+	mkdir lib/ ; \
+	mkdir scribus_html/ ;
 
 markdowns:$(alldocx) # convert docx to md
 	for i in $(alldocx) ; \
@@ -48,6 +48,20 @@ icmls: $(allmarkdown)
 		-o $$icml ; \
 	done
 
+#pandoc -f markdown -t html5 --template=scribus.html.template md/1_2-Berardi.md
+scribus: $(allmarkdown)
+	for i in $(allmarkdown) ; \
+	do html=`basename $$i .md`.html ; \
+	./scripts/md_stripmetada.py $$i > md/tmp.md ; \
+	pandoc md/tmp.md \
+		--from=markdown \
+		--to=html5 \
+		--template=scribus.html.template \
+		-o scribus_html/$$html ; \
+	done
+
+
+
 
 
 book.md: clean $(allmarkdown)
@@ -62,12 +76,12 @@ book.epub: clean $(allmarkdown) book.md epub/metadata.xml epub/styles.epub.css e
 		--from markdown \
 		--to epub3 \
 		--self-contained \
-		--epub-chapter-level=1 \
+		--epub-chapter-level=2 \
 		--epub-stylesheet=../epub/styles.epub.css \
 		--epub-cover-image=../epub/cover.jpg \
 		--epub-metadata=../epub/metadata.xml \
 		--default-image-extension png \
-		--toc-depth=1 \
+		--toc-depth=3 \
 		-o ../book.epub \
 		book.md ; \
 	cd ../ ; \
