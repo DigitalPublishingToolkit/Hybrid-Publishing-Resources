@@ -1,6 +1,9 @@
 # INC Hybrid Publication's Resources
 
-This repository consists of a collection of resources aided to the development of EPUBs, based on Pandoc,  Markdown source files, a make file and a few scripts.
+This repository consists of a collection of resources aimed at the development hybrid publications, in both reflowable format (EPUB3) and *fixed layout* (Scribus and inDesign structured content).
+The resources propose a workflow based on the conversion between markup languages, using [Pandoc]() and [Markdown]() source-files as its essential elements.
+Most of the ideas materialized in this collections of resources originated from the research developed by the [Digital Publishing Toolkit]() project, specially the controbutions from [Michael Murtaugh]() and [Silvio Lorusso]().
+
 
 
 ## Get you git on

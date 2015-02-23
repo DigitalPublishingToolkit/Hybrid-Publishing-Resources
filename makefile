@@ -63,7 +63,6 @@ scribus: $(allmarkdown)
 
 
 
-
 book.md: clean $(allmarkdown)
 	for i in $(allmarkdown) ; \
 	do ./scripts/md_stripmetada.py $$i >> md/book.md ; \
