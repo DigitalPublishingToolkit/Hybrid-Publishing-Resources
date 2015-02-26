@@ -55,7 +55,9 @@ André Castro 2015
 * in `git clone` make depth 1 - no previous history
 * rm -tf .git
 
+* font in epub/ ; rm lib/
 
+* integrate `epub_zip.py` and `epub_unzip.py` with `epub_process.py` so that latter does only processing
 
 # Notes from workshop
 

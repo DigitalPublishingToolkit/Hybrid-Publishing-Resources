@@ -62,12 +62,12 @@ scribus: $(allmarkdown)
 
 
 
-
 book.md: clean $(allmarkdown)
 	for i in $(allmarkdown) ; \
 	do ./scripts/md_stripmetada.py $$i >> md/book.md ; \
+	./scripts/md_urlize.py md/book.md ; \
 	done
-
+#Note: md_urlize.py script requires Django to be installed
 
 
 book.epub: clean $(allmarkdown) book.md epub/metadata.xml epub/styles.epub.css epub/cover.jpg
@@ -75,17 +75,23 @@ book.epub: clean $(allmarkdown) book.md epub/metadata.xml epub/styles.epub.css e
 		--from markdown \
 		--to epub3 \
 		--self-contained \
-		--epub-chapter-level=2 \
+		--epub-chapter-level=1 \
 		--epub-stylesheet=../epub/styles.epub.css \
 		--epub-cover-image=../epub/cover.jpg \
 		--epub-metadata=../epub/metadata.xml \
 		--default-image-extension png \
-		--toc-depth=3 \
+		--toc-depth=1 \
+		--epub-embed-font=../lib/ArchivoBlack-Regular.otf \
+		--epub-embed-font=../lib/Arnhem-BoldItalic.otf \
+		--epub-embed-font=../lib/Arnhem-Bold.otf \
+		--epub-embed-font=../lib/Arnhem-NormalItalic.otf \
+		--epub-embed-font=../lib/Arnhem-Normal.otf \
+		--epub-embed-font=../lib/Raleway-Regular.otf \
 		-o ../book.epub \
 		book.md ; \
-	cd ../ ; \
-	python scripts/epub_process.py book.epub ;
-
+		cd .. \ ;
+		python scripts/epub_process.py book.epub ; \
+		done
 #		--epub-embed-font=lib/UbuntuMono-B.ttf \
 
 clean:  # remove outputs

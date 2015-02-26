@@ -5,8 +5,6 @@ from os.path import join
 from xml.etree import ElementTree as ET
 import html5lib
 import argparse
-#from django.utils.html import urlize
-
 """
 (C) 2014 Andre Castro
 
@@ -48,11 +46,11 @@ def fn_rm_sup(tree, element): # Removes Footnotes <sub>
                 fn.text=number
 
 def replace_fn_links(tree, element): #replace back arrows with work "back"
-    for tag in tree.findall(element):
-        if tag.text is not None:
-            text=(tag.text).encode('utf-8')
-            if text == '↩':#'&#8617;':
-                tag.text = 'back'
+    for parag in tree.findall(element):
+        anchors = parag.findall("./a")
+        for anchor in anchors:
+            if '#fn'in anchor.get('href'):
+                anchor.text = 'back'
 
    
 def spine(filename): # makes cover & title page linear is <spine>
@@ -79,15 +77,6 @@ def save_html(content_dir, content_file, tree ):
 temp_ls=os.listdir("temp/")
 temp_ls.sort()
 
-'''
-# URLIZE DEF - NEEDS DJANGO Installed
-url_regex = '.*http[s]?://.*' # any url                 
-def urlize_text(tree, element):
-    for tag in tree.findall(element):
-        if tag.text is not None:
-            text=(tag.text).encode('utf-8')
-            text=urlize(text, nofollow=False)
-'''
             
 for f in temp_ls: #loop epub contained files     
     if f[:2]=='ch' and f[-6:]==".xhtml": # all ch*.xhtml        
@@ -95,9 +84,7 @@ for f in temp_ls: #loop epub contained files
         xhtml = open(filename, "r") 
         xhtml_parsed = html5lib.parse(xhtml, namespaceHTMLElements=False)
         fn_rm_sup(xhtml_parsed, './/a[@class="footnoteRef"]')
-        replace_fn_links(xhtml_parsed, './/li/p/a')        
-#        urlize_text(xhtml_parsed, './/p')
-#        urlize_text(xhtml_parsed, './/li')
+        replace_fn_links(xhtml_parsed, './/section[@class="footnotes"]/ol/li/p')        
         
         save_html(
             content_dir=temp_dir,
@@ -129,6 +116,7 @@ for name in dirlist:
     path = name[5:] # removes 'temp/'
     epub.write(name, path, zipfile.ZIP_DEFLATED)
 
+    
 epub.close()
 
 # Step 4: clean up: rm temp zipname
