@@ -25,7 +25,8 @@ def unique_footnoes(text):
     return sub_text.encode("utf-8")
         
 sub_text = unique_footnoes(text)
-output_file = open(input_filename, "w") # open and parse
-output_file.write(sub_text)
-output_file.close()
+print sub_text
+# output_file = open(input_filename, "w") # open and parse
+# output_file.write(sub_text)
+# output_file.close()
 #
