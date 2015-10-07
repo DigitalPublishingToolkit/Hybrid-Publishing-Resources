@@ -15,6 +15,7 @@ test: $(allmarkdown)
 	echo $(allmarkdown) ; 
 	echo "end" ;
 
+
 folders:
 	mkdir docx/ ; \
 	mkdir md/ ; \
@@ -23,9 +24,11 @@ folders:
 	mkdir lib/ ; \
 	mkdir scribus_html/ ;
 
+
 markdowns:$(alldocx) # convert docx to md
 	for i in $(alldocx) ; \
 	do md=md/`basename $$i .docx`.md ; \
+	echo "File" $$i $$md ; \
 	pandoc $$i \
 	       	--from=docx \
 		--to=markdown \
@@ -48,7 +51,7 @@ icmls: $(allmarkdown)
 		-o $$icml ; \
 	done
 
-#pandoc -f markdown -t html5 --template=scribus.html.template md/1_2-Berardi.md
+
 scribus: $(allmarkdown)
 	for i in $(allmarkdown) ; \
 	do html=`basename $$i .md`.html ; \
@@ -61,16 +64,13 @@ scribus: $(allmarkdown)
 	done
 
 
-
 book.md: clean $(allmarkdown)
 	for i in $(allmarkdown) ; \
 	do ./scripts/md_stripmetada.py $$i >> md/book.md ; \
-	./scripts/md_urlize.py md/book.md ; \
 	done
-#Note: md_urlize.py script requires Django to be installed
 
 
-book.epub: clean $(allmarkdown) book.md epub/metadata.xml epub/styles.epub.css epub/cover.jpg
+epub: clean $(allmarkdown) book.md epub/metadata.xml epub/styles.epub.css epub/cover.jpg
 	cd md && pandoc \
 		--from markdown \
 		--to epub3 \
@@ -81,21 +81,15 @@ book.epub: clean $(allmarkdown) book.md epub/metadata.xml epub/styles.epub.css e
 		--epub-metadata=../epub/metadata.xml \
 		--default-image-extension png \
 		--toc-depth=1 \
-		--epub-embed-font=../lib/ArchivoBlack-Regular.otf \
-		--epub-embed-font=../lib/Arnhem-BoldItalic.otf \
-		--epub-embed-font=../lib/Arnhem-Bold.otf \
-		--epub-embed-font=../lib/Arnhem-NormalItalic.otf \
-		--epub-embed-font=../lib/Arnhem-Normal.otf \
-		--epub-embed-font=../lib/Raleway-Regular.otf \
 		-o ../book.epub \
 		book.md ; \
-		cd .. \ ;
-		python scripts/epub_process.py book.epub ; \
 		done
+#include line, if you wanto embed font:
 #		--epub-embed-font=lib/UbuntuMono-B.ttf \
+
 
 clean:  # remove outputs
 	rm -f md/book.md  
 	rm -f book.epub 
 	rm -f *~ */*~  #emacs files
-# improve rule: rm if file exits
+
