@@ -19,7 +19,7 @@ Rights: CC BY-NC 4.0
 
 # Test title and the Autonomy of Art: The Culture of Power, the Power of Culture[^Test-chapter_1]
 
-<span class="author">Author name</span>
+<span class="author">James R. Spanner</span>
 
 Lorem Ipsum, advanced neoliberal reforms are taking place at a much
 faster pace than in other parts of the world. These reforms have
