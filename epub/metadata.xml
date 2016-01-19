@@ -11,7 +11,8 @@
 <meta refines="#epub-contributor-1" property="role" scheme="marc:relators">edt</meta>
 <dc:contributor id="epub-contributor-5">DESIGNER'S NAME</dc:contributor>
 <meta refines="#epub-contributor-5" property="role" scheme="marc:relators">dsr</meta>
-<dc:rights>Creative Commons Attribution, NonCommercial, ShareAlike 3.0 Unported (CC BY-NC-SA 3.0)</dc:rights>
+<dc:rights>Creative Commons
+Attribution-NonCommercial-ShareAlike 4.0 International (CC-BY-NC-SA 4.0)</dc:rights>
 <dc:subject>TAGS, SEPARATED BY, COMAS</dc:subject>
 <dc:description>PUBLICATION SYNOPSIS</dc:description>
 
