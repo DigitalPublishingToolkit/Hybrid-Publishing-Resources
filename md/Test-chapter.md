@@ -19,18 +19,12 @@ Rights: CC BY-NC 4.0
 
 # Test title and the Autonomy of Art: The Culture of Power, the Power of Culture[^Test-chapter_1]
 
-<span class="author">James R. Spanner</span>
+Author name
 
 Lorem Ipsum, advanced neoliberal reforms are taking place at a much
 faster pace than in other parts of the world. These reforms have
 delivered not only new forms of life and making a living but also new
-sensibilities. 
-
-<blockquote>
-New blockquote Lorem ipsum.
-</blockquote>
-
-The erosion of the social contract brought by these
+sensibilities. The erosion of the social contract brought by these
 reforms, has had tangible (all negative) effects on the social tissue.
 This has materialized, for example, in what is known as the most violent
 and dangerous city in the world, Ciudad Juárez, where in 2010 alone,
@@ -77,7 +71,7 @@ faces in the media or in art by spectacularizing their subjectivity but
 obviating the processes that placed them in those very situations that
 render their lives precarious and endangered in the first place.
 
-![](imgs/test.png)
+![](media/image1.png){width="6.1375in" height="2.2840277777777778in"}
 
 ## Section
 
@@ -441,7 +435,7 @@ justice, abandoning its claim to become a progressive social force.[^Test-chapte
 Above all, it would work against the power of culture and the culture of
 power.
 
-### Reference List
+**Reference List**
 
 Adorno, Theodor. 'Commitment', *New Left Review* I (87088)
 (September-December, 1974).
@@ -522,7 +516,7 @@ the 1980s', *New Left Review* I 230 (July-August, 1998)
     http://www.taniabruguera.com/cms/486-0-Immigrant+Movement+International.htm.
 
 [^Test-chapter_11]: Oliver Marchart, 'Art, Space and the Public Sphere(s)' (2002),
-    [http://eipcp.net/transversal/0102/marchart/en](styles.xml)
+    <http://eipcp.net/transversal/0102/marchart/en>
 
 [^Test-chapter_12]: Gregory Sholette, 'Welcome to the Desert of the Real Artworld,'
     *Oxford Art Journal* 27.2 (2004): 260-261, :
@@ -531,7 +525,7 @@ the 1980s', *New Left Review* I 230 (July-August, 1998)
 [^Test-chapter_13]: Nato Thompson, 'The Insurgents Part I: Community-Based Practice
     as Military Methodology,' *e-flux journal* \# 47, (September 2013),
     available
-    online:[http://www.e-flux.com/journal/the-insurgents-part-i-community-based-practice-as-military-methodology/](stylesWithEffects.xml).
+    online:<http://www.e-flux.com/journal/the-insurgents-part-i-community-based-practice-as-military-methodology/>.
     In the second part of his essay, Thompson includes a disclaimer
     about him glossing over U.S. military violence in Iraq. See:
     http://www.e-flux.com/journal/the-insurgents-part-ii-fighting-the-left-by-being-the-left/
@@ -576,7 +570,7 @@ the 1980s', *New Left Review* I 230 (July-August, 1998)
 
 [^Test-chapter_24]: Marina Vishmidt, 'Mimesis of the Hardened and Alienated: Social
     Practice as a Business Model,' *e-flux journal* 43 (March, 2013),
-    <a href="http://www.e-flux.com/journal/“mimesis-of-the-hardened-and-alienated”-social-practice-as-business-model/">Link</a>
+    http://www.e-flux.com/journal/“mimesis-of-the-hardened-and-alienated”-social-practice-as-business-model/
 
 [^Test-chapter_25]: Ibid.
 
@@ -586,4 +580,4 @@ the 1980s', *New Left Review* I 230 (July-August, 1998)
     espèce, ou à la fin de l'ère des guerriers -notre époque n'est plus
     celle des guerriers, elle est celle des insectes, des animaux
     insignifiants, plus capables de
-    s'adapter...<a href="http://whitney.org/file\_columns/0002/9848/andreafraser\_1\_2012whitneybiennial.pdf">http://whitney.org/file\_columns/0002/9848/andreafraser\_1\_2012whitneybiennial.pdf</a>
+    s'adapter...http://whitney.org/file\_columns/0002/9848/andreafraser\_1\_2012whitneybiennial.pdf
