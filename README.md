@@ -39,11 +39,7 @@ INC guides and templates for essay writing, can be found at
 ## Audiobook
 Assumes you have valid, well formatted markdown files inside the md folder.
 
-If you would like to convert from docx to md, make sure you use the recipe
-
-`make markdownsaudio`
-
-instead of `make markdowns`. This is due to the fact that the `make markdowns` recipe runs a script that makes unique footnotes. Not only it is not necessary for the audiobook but also it disturbs the process of moving footnotes from bottom to inline, which is essential to the reading experience in the audiobook.
+If you would like to convert from docx to md, make sure you use the recipe `make markdownsaudio` instead of `make markdowns`. This is due to the fact that the `make markdowns` recipe runs a script that makes unique footnotes. Not only it is not necessary for the audiobook but also it disturbs the process of moving footnotes from bottom to inline, which is essential to the reading experience in the audiobook.
 
 Make sure there are numbers before the file names according to the order you want - e.g. 00_txt.md, 01_chapter.md, 02_file.md, etc. Also, use atx-style headers (#).
 
