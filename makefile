@@ -11,8 +11,8 @@ icmls=$(wildcard icml/*.icml)
 
 
 test: $(allmarkdown)
-	echo "start" ; 
-	echo $(allmarkdown) ; 
+	echo "start" ;
+	echo $(allmarkdown) ;
 	echo "end" ;
 
 
@@ -84,13 +84,27 @@ epub: clean $(allmarkdown) book.md epub/metadata.xml epub/styles.epub.css epub/c
 		--epub-embed-font=../lib/* \
 		-o ../book.epub \
 		book.md ; \
-		
+
 #include line, if you wanto embed font:
 #		--epub-embed-font=lib/UbuntuMono-B.ttf \
 
 
 clean:  # remove outputs
-	rm -f md/book.md  
-	rm -f book.epub 
+	rm -f md/book.md
+	rm -f book.epub
 	rm -f *~ */*~  #emacs files
 
+clean-toc: #remove toc.yaml
+	@rm -f toc.yaml
+
+toc.yaml:  clean-toc #create toc.yaml for audiobook, clean existing toc.yaml file first
+	@echo 'File toc.yaml being generated.'
+	@echo ' '
+	@python ./scripts/ab_toc.py
+	@echo ' '
+	@echo 'Done. Please check generated file - md files should use atx headers (#) for correct yaml generation.'
+
+audiobook: toc.yaml #create audiobook, create toc.yaml first
+	@echo 'Making audiobook...'
+	@python ./scripts/ab_audiobook.py
+	@echo 'Done.'
