@@ -47,7 +47,7 @@ instead of `make markdowns`. This is due to the fact that the `make markdowns` r
 
 Make sure there are numbers before the file names according to the order you want - e.g. 00_txt.md, 01_chapter.md, 02_file.md, etc. Also, use atx-style headers (#).
 
->Markdown offers two styles of headers: Setext and atx. Setext-style headers for <h1> and <h2> are created by “underlining” with equal signs (=) and hyphens (-), respectively. To create an atx-style header, you put 1-6 hash marks (#) at the beginning of the line — the number of hashes equals the resulting HTML header level.
+>Markdown offers two styles of headers: Setext and atx. Setext-style headers for h1 and h2 are created by “underlining” with equal signs (=) and hyphens (-), respectively. To create an atx-style header, you put 1-6 hash marks (#) at the beginning of the line — the number of hashes equals the resulting HTML header level.
 
 source: [https://daringfireball.net/projects/markdown/basics](https://daringfireball.net/projects/markdown/basics)
 
