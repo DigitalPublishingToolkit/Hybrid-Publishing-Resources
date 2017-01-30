@@ -77,14 +77,16 @@ To check another module, type
 
 If you do need to install any module, first you need to install pip. You can find further info  [here](https://packaging.python.org/installing/#requirements-for-installing-packages).
 
-Sometimes the module you need is in a package and not always they share the same name. In order to find the packages you need to install, a simple online search with the terms 'python [module name]' should put you in the right track. Once you find it, type in the Terminal:
+Sometimes the module you need is in a package and not always they share the same name. In order to find the packages you need to install, a simple online search with the terms 'python install [module name]' should put you in the right track. Once you find it, type in the Terminal:
 
-`pip install [package_name]`
+`pip install [package_name]` without the brackets
 
 For clarification on the terms module and package, check [https://packaging.python.org/glossary/#term-import-package](https://packaging.python.org/glossary/#term-import-package)
 
 ### Other requirements
 You will also need the software listed below. In the links provided, you will find instructions on how to install them in all operating systems. However, some code samples in the text below might refer exclusively for MacOSX.
+
+To check if the software is installed, in the Terminal type `which pandoc` (replacing pandoc with any other software you might want to check). *If not installed, you will see no response in the terminal.*
 
 #### pandoc (converts md to txt)
 Follow the instructions on
@@ -97,7 +99,7 @@ Download it on
 To install, follow the instructions on
 [http://www.speech.cs.cmu.edu/flite/doc/flite_4.html](http://www.speech.cs.cmu.edu/flite/doc/flite_4.html)
 
-Basically, you should extract the compressed files, then navigate to the folder, type ./configure, make and then make install. Like this (**one line at a time**):
+Basically, you should extract the compressed files, then navigate to the folder, type ./configure, make and then make install (you might need to `sudo make install`). Like this (**one line at a time**):
 
     tar zxvf flite-XXX.tar.gz
     cd flite-XXX
@@ -154,7 +156,7 @@ You can also install it using brew:
 
 `brew install ffmpeg --with-fdk-aac --with-ffplay --with-freetype --with-frei0r --with-libass --with-libvo-aacenc --with-libvorbis --with-libvpx --with-opencore-amr --with-openjpeg --with-opus --with-rtmpdump --with-schroedinger --with-speex --with-theora --with-tools`
 
-This will install ffmpeg and all options available.
+This will install ffmpeg and all options available. If errors appear, make sure to read and follow the instructions given on the Terminal.
 
 Alternatively, check [https://ffmpeg.org/download.html](https://ffmpeg.org/download.html ) and after downloading the file, follow the compilation guide:
 [https://trac.ffmpeg.org/wiki/CompilationGuide](https://trac.ffmpeg.org/wiki/CompilationGuide)
@@ -179,7 +181,13 @@ For other OS's follow the instructions on
 Download file from
 [https://code.google.com/archive/p/mp4v2/downloads](https://code.google.com/archive/p/mp4v2/downloads)
 
-Unzip downloaded file and open INSTALL to read installation instructions (basically the same commands above: configure, make, make install).
+Unzip downloaded file and open INSTALL to read installation instructions - basically the same commands done before (one at a time):
+
+`./configure`
+
+`make`
+
+`make install`
 
 ---
 
